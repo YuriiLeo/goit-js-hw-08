@@ -25,9 +25,16 @@ function onTextareaInput(event) {
 // 2 Pru onovlenni vutyagnyv z lokaly i vstavuv y polya
 
 function fillingTextarea() {
+    
     let savedData = localStorage.getItem(LOCALSTORAGE_KEY);
     
+    try {
     savedData = JSON.parse(savedData);
+     } catch (error) {
+     console.log(error.name); 
+     console.log(error.message); 
+    }
+    
     if (savedData) {
         refs.input.value = savedData.email;     
         refs.textarea.value = savedData.message; 
